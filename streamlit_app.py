@@ -7,13 +7,27 @@ import numpy as np
 st.set_page_config(layout="centered", page_title="Notion Chart")
 
 # Hides streamlit menu and footer for cleaner embed
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+# CSS to hide the footer and fullscreen button
+hide_style = """
+    <style>
+    /* Hides the "Made with Streamlit" footer */
+    footer {visibility: hidden;}
+    
+    /* Hides the top header bar */
+    header {visibility: hidden;}
+
+    /* Hides the Fullscreen button in the bottom right */
+    button[title="View fullscreen"] {
+        visibility: hidden;
+    }
+    
+    /* Hides the 'Manage App' and other community cloud branding */
+    .embeddedAppMetaInfoBar_container__DxxL1 {
+        display: none !important;
+    }
+    </style>
+"""
+st.markdown(hide_style, unsafe_allow_html=True)
 
 # 1. Create sample data
 chart_data = pd.DataFrame(
